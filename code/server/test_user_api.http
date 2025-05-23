@@ -1,0 +1,81 @@
+# This file can be used for thesting the API with a dedicated Visual Studio Code extension.
+
+## Route for creating a user.
+POST http://localhost:3001/ezelectronics/users HTTP/1.1
+content-type: application/json
+
+{
+    "username": "test-admin",
+    "name": "test-name",
+    "surname": "test-surname",
+    "password": "test-admin",
+    "role": "Admin"
+}
+###
+
+## Route for logging in a user.
+## Returns a json of the user and his cookie
+## Example: connect.sid=s%3AqIEev30RMPz1YWJ9WIrcA1pLSWJ2xbTK.K3LwrlpWwIg3L%2B68ZK0k%2F3XNIafcr9ZnaruBu2kU918; Path=/; HttpOnly
+POST http://localhost:3001/ezelectronics/sessions HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "test-admin",
+    "password": "test-admin"
+}
+###
+
+## Route for retrieving the currently logged in user.
+GET http://localhost:3001/ezelectronics/sessions/current HTTP/1.1
+Content-Type: application/json
+###
+
+## Route for logout the current logged in user
+DELETE http://localhost:3001/ezelectronics/sessions/current HTTP/1.1
+Content-Type: application/json
+###
+
+
+## Route for retrieving a user by its username.
+GET http://localhost:3001/ezelectronics/users/test-admin HTTP/1.1
+Content-Type: application/json
+###
+
+## Route for retrieving all users (requires admin privileges).
+GET http://localhost:3001/ezelectronics/users HTTP/1.1
+Content-Type: application/json
+###
+
+### Route for retrieving all users of a specific role. (requires admin privileges)
+GET http://localhost:3001/ezelectronics/users/roles/Customer HTTP/1.1
+Content-Type: application/json
+###
+
+### Route for updating the information of a user.
+PATCH http://localhost:3001/ezelectronics/users/test-admin HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "cool-test-name",
+    "surname": "cool-test-surname",
+    "address": "cool-test-address",
+    "birthdate": "2024-05-30"
+}
+###
+
+
+
+## Route for deleting the current logged in user (path param=username)
+DELETE http://localhost:3001/ezelectronics/users/test-admin HTTP/1.1
+Content-Type: application/json
+###
+
+## Route for deleting all users (requires admin privileges)
+DELETE http://localhost:3001/ezelectronics/users HTTP/1.1
+Content-Type: application/json
+###
+
+
+
+
+

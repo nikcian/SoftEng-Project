@@ -1,0 +1,19 @@
+##
+POST http://localhost:3001/ezelectronics/sessions HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "skenz",
+    "password": "linuxjflex"
+}
+
+###
+
+##
+PATCH http://localhost:3001/ezelectronics/products/iPhone%2015/sell HTTP/1.1
+Content-Type: application/json
+
+{
+    "quantity": 2,
+    "sellingDate": null
+}
